@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>WBGT Signage</title>
   <style>
-    /* 画面全体の余白をなくし、背景を黒で固定 */
     html, body {
       margin: 0;
       padding: 0;
@@ -14,31 +13,33 @@
       overflow: hidden;
     }
 
-    /* 1. サイネージに表示したい「切り抜き窓」のサイズ */
     .signage-window {
-      width: 100vw;       /* 画面の横幅いっぱいに表示 */
-      height: 100vh;      /* 画面の縦幅いっぱいに表示 */
+      width: 100vw;
+      height: 100vh;
       position: relative;
       overflow: hidden;
       background-color: #000000;
     }
 
-    /* 2. 元サイトを枠に合わせて拡大・位置調整する設定 */
     .signage-window iframe {
       position: absolute;
       border: none;
-
-      /* 元サイトをデスクトップ表示（横1024px）として固定で読み込む */
+      
+      /* 元サイトの読み込みサイズを固定 */
       width: 1024px;
       height: 900px;
 
-      /* 【重要】黒い部分が中央にくるように、位置と拡大率を調整 */
-      /* 相手のサイトの「黒い枠」をサイネージ画面にぴったり合わせる魔法の数値です */
+      /* 表示位置の基準を中央に設定 */
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -52%) scale(0.95);
+
+      /* 【ここを調整しました】
+        ・-53% → 左側へもっと引っ張る（左の余白を消す）
+        ・-56% → 上側へもっと引っ張る（上の余白を消す）
+        ・scale(1.05) → 全体を1.05倍に少し拡大して、四隅の余白を画面外に押し出す
+      */
+      transform: translate(-53%, -56%) scale(1.05);
       
-      /* スケールの基準点を中央にする */
       transform-origin: center center;
     }
   </style>
