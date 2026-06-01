@@ -15,19 +15,18 @@
 
     /* 1. 外枠（覗き窓）の設定 */
     .signage-window {
-      width: 55vw;        /* ここの数値を小さくすると、右側が削れていきます */
-      height: 100vh;      /* 縦幅は完璧な状態を維持 */
+      /* 調整した横幅をここに維持してください（例として55vwにしています） */
+      width: 55vw;        
+      height: 100vh;      
       position: relative;
       overflow: hidden;
       background-color: #000000;
-      margin: 0 auto;     /* 画面の中央に配置 */
-
-      /* 【調整用】一時的に太い赤線を引いています。位置が合ったらこの1行を消してください */
-      border: 5px solid #ff0000; 
-      box-sizing: border-box;    /* 線の太さでサイズがズレるのを防ぐ設定 */
+      margin: 0 auto;     
+      
+      /* 赤線（border）を完全に削除しました */
     }
 
-    /* 2. iframeの設定（左と上が完璧だった時の数値を固定） */
+    /* 2. iframeの設定（バチッと決まった黄金比を維持） */
     .signage-window iframe {
       position: absolute;
       border: none;
@@ -37,8 +36,8 @@
       top: 50%;
       left: 50%;
 
-      /* 左-96%、上-62%、拡大率1.35の黄金比を維持 */
-      transform: translate(-62%, -62%) scale(1.35);
+      /* 左-96%、上-62%、拡大率1.35 */
+      transform: translate(-96%, -62%) scale(1.35);
       
       transform-origin: center center;
     }
