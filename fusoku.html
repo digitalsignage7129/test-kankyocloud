@@ -14,7 +14,8 @@
     }
 
     .signage-window {
-      width: 60vw; 
+      /* 横幅を少し広げて、右側の見切れを解消する準備 */
+      width: 70vw; 
       height: 100vh;
       position: relative;
       overflow: hidden;
@@ -32,10 +33,12 @@
       left: 50%;
 
       /* 【調整ポイント】
-         ・scale(1.05) → scale(1.6) に大幅アップ（これで画面いっぱいに広がります）
-         ・translate(-58%, -45%) → translate(-50%, -50%) に調整
+         ・translate(-50%, -50%) → translate(-58%, -50%)
+           1番目を -58% にすることで、左へグッと寄せました。
+           2番目の -50% は「上の頭が完璧だった」今の数値をそのまま維持しています。
+         ・scale(1.6) はそのまま維持します。
       */
-      transform: translate(-50%, -50%) scale(1.6);
+      transform: translate(-58%, -50%) scale(1.6);
       
       transform-origin: center center;
     }
