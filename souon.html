@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Environmental Monitoring Signage</title>
+  <title>WBGT Signage</title>
   <style>
     html, body {
       margin: 0;
@@ -14,40 +14,38 @@
     }
 
     .signage-window {
-      /* 右側に余白が出ないよう、画面幅に合わせて自動調整 */
-      width: 100vw;
+      /* 【ここを調整するだけでOK】 */
+      /* 縦幅はそのままに、横幅だけを調整できます */
+      width: 60vw; 
       height: 100vh;
       position: relative;
       overflow: hidden;
       background-color: #000000;
+      margin: 0 auto;
     }
 
     .signage-window iframe {
       position: absolute;
       border: none;
       
-      /* 【変更点】iframeの横幅を600pxに制限し、横長感を殺す */
-      width: 600px;      
-      height: 800px;      
+      /* 前回の「縦が完璧だった設定」をそのまま維持 */
+      width: 1024px;      
+      height: 900px;      
 
       top: 50%;
       left: 50%;
 
-      /* 横幅を狭めたので、translateとscaleを再調整。
-         左余白が気になる場合はtranslateの最初の数値(今は-50%)を、
-         下余白が気になる場合はscaleを微調整してください。
-      */
-      transform: translate(-50%, -50%) scale(1.6);
+      /* 前回、「これで縦が完璧」と言っていただいた数値をそのまま入れます */
+      /* もし前の数値と微妙に違う場合は、手元のメモにある数値に書き換えてください */
+      transform: translate(-58%, -56%) scale(1.35);
       
       transform-origin: center center;
     }
   </style>
 </head>
 <body>
-
   <div class="signage-window">
     <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/SSC/RN?LoID=244" scrolling="no"></iframe>
   </div>
-
 </body>
 </html>
