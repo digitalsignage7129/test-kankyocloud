@@ -14,10 +14,11 @@
     }
 
     /* 1. 外枠（覗き窓）の設定
-       横長感を抑えるために、まずは前回のスリムな横幅（55vw）を引き継いでいます。
+       「右が見切れている」「横幅を広げる必要あり」とのことなので、
+       横幅を「55vw」から「75vw」へと大きく広げました。
     */
     .signage-window {
-      width: 55vw;        /* 右側をもっと削るなら小さく、広げるなら大きく */
+      width: 75vw;        /* 【変更】右側を広く見せるために大幅に広げました */
       height: 100vh;      
       position: relative;
       overflow: hidden;
@@ -29,7 +30,7 @@
       box-sizing: border-box;    
     }
 
-    /* 2. iframeの設定（初期位置） */
+    /* 2. iframeの設定 */
     .signage-window iframe {
       position: absolute;
       border: none;
@@ -39,11 +40,11 @@
       top: 50%;
       left: 50%;
 
-      /* 【スタート位置の設定】
-         一旦、真ん中あたりをガッツリ1.5倍に拡大して中央に寄せる設定にしています。
-         ここから上下左右に引っ張って微調整します。
+      /* 【変更】
+         ・下が見切れているのを防ぐため、拡大率を「scale(1.50)」から「scale(1.25)」に少し縮めました。
+         ・頭の位置（上の完璧な位置）が変わらないように、上への引っ張り（2番目の数値）を「-50%」から「-58%」に調整してバランスをとっています。
       */
-      transform: translate(-50%, -50%) scale(1.50);
+      transform: translate(-50%, -58%) scale(1.25);
       
       transform-origin: center center;
     }
