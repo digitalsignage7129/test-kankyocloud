@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>WBGT Signage</title>
+  <style>
+    /* 全体の余白をゼロにし、背景を黒にする */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      overflow: hidden;
+    }
+
+    /* 1. 切り抜きたいサイズを指定するコンテナ（外枠）
+      黒い計測部分のサイズに合わせています
+    */
+    .cropped-container {
+      width: 480px;   /* 切り抜く横幅 */
+      height: 380px;  /* 切り抜く縦幅 */
+      position: relative;
+      overflow: hidden;
+      background-color: #000000;
+    }
+
+    /* 2. iframe（元サイト）の配置調整
+      ネガティブマージン（マイナスの位置）を使って不要な部分を画面外に押し出します
+    */
+    .cropped-container iframe {
+      position: absolute;
+      
+      /* 元サイトのヘッダー（約135px分）を上に押し上げて隠す */
+      top: -135px;    
+      
+      /* 左側の余白（約10px分）を左に押し上げて隠す */
+      left: -10px;    
+      
+      /* 元サイトが崩れずに表示される全体の幅と高さ */
+      width: 1000px;  
+      height: 700px;  
+      
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cropped-container">
+    <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/WBGT?LoID=2415" scrolling="no"></iframe>
+  </div>
+
+</body>
+</html>
