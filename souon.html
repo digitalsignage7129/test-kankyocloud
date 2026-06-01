@@ -14,33 +14,30 @@
     }
 
     .signage-window {
-      width: 75vw;        
-      height: 100vh;      
+      /* 右側に余白が出ないよう、画面幅に合わせて自動調整 */
+      width: 100vw;
+      height: 100vh;
       position: relative;
       overflow: hidden;
       background-color: #000000;
-      margin: 0 auto;     
-
-      /* 【調整用】位置合わせ用の赤線 */
-      border: 5px solid #ff0000; 
-      box-sizing: border-box;    
     }
 
     .signage-window iframe {
       position: absolute;
       border: none;
-      width: 1024px;      
-      height: 900px;      
+      
+      /* 【変更点】iframeの横幅を600pxに制限し、横長感を殺す */
+      width: 600px;      
+      height: 800px;      
 
       top: 50%;
       left: 50%;
 
-      /* 【変更点】
-         ・左の余白を消すため：translateの最初の数値を -50% → -58% へと左に移動
-         ・下の余白を埋めるため：scaleを 1.25 → 1.35 へと少し大きく拡大
-         ・頭の位置（上）を維持：translateの2番目の数値を -58% → -56% に調整
+      /* 横幅を狭めたので、translateとscaleを再調整。
+         左余白が気になる場合はtranslateの最初の数値(今は-50%)を、
+         下余白が気になる場合はscaleを微調整してください。
       */
-      transform: translate(-58%, -56%) scale(1.35);
+      transform: translate(-50%, -50%) scale(1.6);
       
       transform-origin: center center;
     }
