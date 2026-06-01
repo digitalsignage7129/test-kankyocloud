@@ -13,12 +13,8 @@
       overflow: hidden;
     }
 
-    /* 1. 外枠（覗き窓）の設定
-       「右が見切れている」「横幅を広げる必要あり」とのことなので、
-       横幅を「55vw」から「75vw」へと大きく広げました。
-    */
     .signage-window {
-      width: 75vw;        /* 【変更】右側を広く見せるために大幅に広げました */
+      width: 75vw;        
       height: 100vh;      
       position: relative;
       overflow: hidden;
@@ -30,7 +26,6 @@
       box-sizing: border-box;    
     }
 
-    /* 2. iframeの設定 */
     .signage-window iframe {
       position: absolute;
       border: none;
@@ -40,11 +35,12 @@
       top: 50%;
       left: 50%;
 
-      /* 【変更】
-         ・下が見切れているのを防ぐため、拡大率を「scale(1.50)」から「scale(1.25)」に少し縮めました。
-         ・頭の位置（上の完璧な位置）が変わらないように、上への引っ張り（2番目の数値）を「-50%」から「-58%」に調整してバランスをとっています。
+      /* 【変更点】
+         ・左の余白を消すため：translateの最初の数値を -50% → -58% へと左に移動
+         ・下の余白を埋めるため：scaleを 1.25 → 1.35 へと少し大きく拡大
+         ・頭の位置（上）を維持：translateの2番目の数値を -58% → -56% に調整
       */
-      transform: translate(-50%, -58%) scale(1.25);
+      transform: translate(-58%, -56%) scale(1.35);
       
       transform-origin: center center;
     }
