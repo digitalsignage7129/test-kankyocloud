@@ -13,32 +13,31 @@
       overflow: hidden;
     }
 
+    /* 1. 外枠（覗き窓）の設定
+       ここを「100vw（画面いっぱい）」から「55vw」のように狭めることで、
+       完璧だった状態のまま、右側の余白だけを非表示に（削り落とす）します。
+    */
     .signage-window {
-      width: 100vw;
-      height: 100vh;
+      width: 55vw;        /* 【ここを調整】右側を削るために横幅を狭くしました */
+      height: 100vh;      /* 縦幅は完璧だったのでそのまま */
       position: relative;
       overflow: hidden;
       background-color: #000000;
+      margin: 0 auto;     /* もし画面の真ん中に置きたい場合はこれを入れておきます */
     }
 
+    /* 2. iframeの設定（完璧だった時の数値をそのまま維持） */
     .signage-window iframe {
       position: absolute;
       border: none;
-      
-      /* 【ここを変更】横長ではなく、黒い部分に合わせたスリムな幅（520px）にする */
-      width: 520px;
-      height: 650px;
+      width: 1024px;      /* 元に戻しました */
+      height: 900px;      /* 元に戻しました */
 
-      /* 画面のほぼ中央を基準にする */
       top: 50%;
       left: 50%;
 
-      /* 【ここを変更】
-        ・幅をスリムにしたので、左への引っ張り（1番目の数値）は -50% 近辺で綺麗に収まるようになります。
-        ・もし上下がはみ出る・足りない場合は 2番目の数値（-51%）を微調整してください。
-        ・画面いっぱいに広げるために scale を 1.85 まで引き上げています。
-      */
-      transform: translate(-50%, -51%) scale(1.85);
+      /* 左-96%、上-62%、拡大率1.35の「完璧だったバランス」をそのまま固定 */
+      transform: translate(-96%, -62%) scale(1.35);
       
       transform-origin: center center;
     }
