@@ -15,33 +15,28 @@
       align-items: center;
     }
 
-    .signage-window {
-      /* 画面の縦横比を固定し、常に最大サイズを取る */
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
+    .signage-container {
+      /* サイネージ側の表示領域を想定したベースサイズ */
+      width: 1024px;
+      height: 900px;
+      
+      /* ここが肝：画面サイズに合わせて自動伸縮する */
+      transform: scale(calc(min(100vw / 1024, 100vh / 900)));
+      transform-origin: center center;
     }
 
     iframe {
+      width: 1024px;
+      height: 900px;
       border: none;
-      width: 100%;
-      height: 100%;
-      /* ここが心臓部：
-         scaleは使わず、iframeの中身を親枠に合わせる設定
-         位置合わせは絶対座標の「%」指定で行うことで、
-         解像度が変わっても自動で比率が維持されます
-      */
-      position: absolute;
-      top: -34%;   /* 上からの位置（割合で指定） */
-      left: -43%;  /* 左からの位置（割合で指定） */
-      transform: scale(1.6); /* 拡大率は固定し、枠内に収める */
+      /* 元々あなたが苦労して切り抜いた場所を維持 */
+      transform: translate(-440px, -310px) scale(1.5);
       transform-origin: left top;
     }
   </style>
 </head>
 <body>
-  <div class="signage-window">
+  <div class="signage-container">
     <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
   </div>
 </body>
