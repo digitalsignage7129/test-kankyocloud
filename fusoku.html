@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Signage</title>
   <style>
     html, body {
       margin: 0;
@@ -13,23 +12,21 @@
       overflow: hidden;
     }
 
+    /* 窓を「ブラウザのサイズ固定」にする */
     .signage-window {
-      /* 元々こうしていたはずです：画面全体を窓にする */
       width: 100vw;
       height: 100vh;
       overflow: hidden;
       background-color: #000000;
-      display: flex;
-      justify-content: center; /* 横方向のセンター寄せ */
-      align-items: center;     /* 縦方向のセンター寄せ */
     }
 
-    .signage-window iframe {
+    /* iframeを「動かさない」 */
+    iframe {
       width: 1024px;
       height: 900px;
       border: none;
+      /* ここだけがあなたの「切り抜き座標」です */
       transform-origin: top left;
-      /* あなたが苦労して決めたあの位置と拡大率 */
       transform: translate(-440px, -310px) scale(1.5);
     }
   </style>
