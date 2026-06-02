@@ -12,22 +12,27 @@
       overflow: hidden;
     }
 
-    /* 窓を「ブラウザのサイズ固定」にする */
     .signage-window {
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      background-color: #000000;
+      position: relative;
     }
 
-    /* iframeを「動かさない」 */
     iframe {
-      width: 1024px;
-      height: 900px;
+      /* サイトのレイアウトを崩さない固定値 */
+      width: 1920px;  /* あえて大きく取ってレスポンシブ崩れを防ぐ */
+      height: 1200px;
       border: none;
-      /* ここだけがあなたの「切り抜き座標」です */
+      
+      /* 位置と拡大を個別に管理 */
+      position: absolute;
+      left: -440px; /* ここで調整した位置をそのまま反映 */
+      top: -310px;
+      
+      /* 拡大率の調整 */
+      transform: scale(1.5);
       transform-origin: top left;
-      transform: translate(-440px, -310px) scale(1.5);
     }
   </style>
 </head>
