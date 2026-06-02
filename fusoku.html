@@ -16,23 +16,22 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+      /* ここで基準を左上にロックします */
       position: relative;
     }
 
     iframe {
-      /* サイトのレイアウトを崩さない固定値 */
-      width: 1920px;  /* あえて大きく取ってレスポンシブ崩れを防ぐ */
-      height: 1200px;
+      width: 1024px;
+      height: 900px;
       border: none;
-      
-      /* 位置と拡大を個別に管理 */
+      /* これ以上、左右にズレないように設定 */
       position: absolute;
-      left: -440px; /* ここで調整した位置をそのまま反映 */
-      top: -310px;
+      top: 0;
+      left: 0;
       
-      /* 拡大率の調整 */
-      transform: scale(1.5);
-      transform-origin: top left;
+      /* 切り抜き座標をここで一括固定 */
+      transform-origin: 0 0;
+      transform: translate(-440px, -310px) scale(1.5);
     }
   </style>
 </head>
