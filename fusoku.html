@@ -14,31 +14,28 @@
     }
 
     .signage-window {
-      width: 70vw; 
+      width: 100vw;
       height: 100vh;
       position: relative;
       overflow: hidden;
       background-color: #000000;
-      margin: 0 auto;
     }
 
     .signage-window iframe {
       position: absolute;
       border: none;
       
-      /* 1. 幅と高さ */
-      width: 1024px;      
-      height: 500px; /* ここで縦幅を調整（小さいほど縦がギュッと詰まる） */
-
-      /* 2. 上の頭を固定する設定 */
-      top: 0; 
+      /* 1. 頭の位置を絶対固定 */
+      top: 0;
       left: 50%;
-
-      /* 3. 横の左寄せと、拡大率 */
-      /* translateの最初の数値で横位置調整、scaleで全体拡大 */
-      transform: translateX(-68%) scale(1.6);
       
-      /* 回転や拡大の基準を「左上」に固定 */
+      /* 2. iframeの中身サイズ（ここを調整すると表示範囲が変わる） */
+      width: 1024px;      
+      height: 900px; 
+
+      /* 3. 左寄せと拡大 */
+      /* translateXで左へずらす、scaleで拡大 */
+      transform: translateX(-55%) scale(1.5);
       transform-origin: top center;
     }
   </style>
