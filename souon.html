@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<style>
-  * { margin: 0; padding: 0; }
-  html, body {
-    width: 600px;
-    height: 512px;
-    overflow: hidden;
-    background: #000;
-  }
-  .crop {
-    position: absolute;
-    top: 0; left: 0;
-    width: 600px;
-    height: 512px;
-    overflow: hidden;
-  }
-  .crop iframe {
-    /* サイトに「600x512の狭い画面だ」と認識させる */
-    width: 600px; 
-    height: 512px;
-    border: none;
-    /* あとは必要に応じてscaleで引き伸ばす */
-    transform-origin: 0 0;
-    transform: scale(1.0); 
-  }
-</style>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; }
+    html, body {
+      width: 600px;
+      height: 512px;
+      overflow: hidden;
+      background: #000;
+    }
+    .crop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 512px;
+      overflow: hidden;
+    }
+    .crop iframe {
+      border: none;
+      /* ここでサイト側に「1920x1080の画面だぞ」と強制的に認識させます */
+      width: 1920px;
+      height: 1080px;
+      /* これにより、以前の成功時と同じレイアウトが生成されます */
+      position: absolute;
+      /* ここで「表示したい場所」を左上に移動させます */
+      left: -440px; 
+      top: -310px;
+    }
+  </style>
 </head>
 <body>
   <div class="crop">
-    <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
+    <iframe
+      src="https://www2.edam.ne.jp/Public/00574/Sokutei/SSC/RN?LoID=244"
+      scrolling="no"
+    ></iframe>
   </div>
 </body>
 </html>
