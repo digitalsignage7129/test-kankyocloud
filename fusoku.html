@@ -36,5 +36,14 @@
   <div class="signage-window">
     <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
   </div>
+  <script>
+  function autoFit() {
+    // 画面幅（サイネージの枠の幅）と想定するコンテンツ幅（1024px）の比率を自動計算
+    var scale = window.innerWidth / 1024;
+    document.body.style.zoom = scale;
+  }
+  window.onload = autoFit;
+  window.onresize = autoFit;
+</script>
 </body>
 </html>
