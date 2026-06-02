@@ -16,21 +16,23 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      background-color: #000000;
+      position: relative;
     }
 
     iframe {
-      /* iframe自体のサイズを今のサイネージの大きさに合わせて強制的に広げます */
-      width: 1536px;
-      height: 1350px;
+      /* iframeを親枠に対して完全に固定する */
       border: none;
+      position: absolute;
+      top: -310px;  /* ここが今の位置 */
+      left: -440px; /* ここが今の位置 */
       
-      /* 位置調整は「margin」を使って、泥臭く微調整します */
-      /* これなら、左上が合っているならそこを起点に少しずつ動かせます */
-      margin-left: -440px; 
-      margin-top: -310px;
+      /* ポイント：iframeのサイズを小さく絞る */
+      width: 1024px;
+      height: 900px;
       
-      /* scaleは使わないことで、サイトのレイアウト崩れを完全に防ぎます */
+      /* スケールアップで枠いっぱいに広げる */
+      transform: scale(2.0); 
+      transform-origin: left top;
     }
   </style>
 </head>
