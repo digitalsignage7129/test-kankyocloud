@@ -15,16 +15,13 @@
     color: #ffffff;
   }
 
-  /* ==========================================
-     【新大技】画面全体を96%に縮小し、
-     上下左右に「絶対にはみ出さない安全マージン」を自動生成する
-     ========================================== */
+  /* 画面全体のレイアウト */
   .main-container {
     display: flex;
     width: 1920px;
     height: 1080px;
     padding: 30px;
-    gap: 40px; /* パネルとモニターの間のバランスの良い隙間 */
+    gap: 40px;
     
     transform-origin: center center;
     transform: scale(0.96); /* 画面全体のハミ出しを内側にキュッと収める */
@@ -34,14 +31,15 @@
      左側：情報・ロゴエリア（サイドバー）
      ========================================== */
   .sidebar {
-    width: 860px; /* はみ出さない限界の黄金比ワイド幅に再調整 */
+    width: 860px; 
     height: 1020px;
     background: #161b22;
     border-radius: 16px;
-    padding: 50px 40px;
+    padding: 40px 30px; /* 上下のパディングを少し詰め、横幅を確保 */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* 【変更】上詰めに変更し、間隔をコントロール */
+    gap: 35px; /* 【変更】各要素の隙間を一定にしてハミ出しを防止 */
     border: 3px solid #30363d;
   }
 
@@ -49,7 +47,7 @@
   .logo-area {
     width: 100%;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
     border-bottom: 3px solid #30363d;
   }
   .logo-area img {
@@ -60,7 +58,7 @@
 
   /* メインタイトル */
   .main-title {
-    margin-top: 30px;
+    margin-top: 25px;
     font-size: 52px;
     font-weight: 900;
     letter-spacing: 4px;
@@ -71,15 +69,14 @@
 
   /* 設置場所一覧リスト */
   .location-list {
-    margin-top: -10px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 20px; /* 【変更】隙間を少しだけ詰めて下に余裕を作る */
   }
   .location-item {
     font-size: 38px;
     font-weight: 900;
-    padding: 28px 35px;
+    padding: 24px 35px; /* 【変更】上下の厚みを少しスマートに */
     background: #21262d;
     border-radius: 14px;
     border-left: 18px solid #ccc;
@@ -94,8 +91,9 @@
 
   /* 下部のアナウンスエリア */
   .footer-notice {
+    margin-top: auto; /* 【変更】これを入れることで、確実に一番下へ綺麗に張り付きます */
     background: #21262d;
-    padding: 30px 20px;
+    padding: 25px 20px; /* 【変更】少し高さを抑えてハミ出しを完全ガード */
     border-radius: 14px;
     border: 3px dashed #484f58;
     text-align: center;
@@ -103,7 +101,7 @@
   .notice-title {
     font-size: 32px;
     color: #8b949e;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-weight: 900;
     letter-spacing: 3px;
   }
