@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>騒音振動計 総合監視モニター</title>
+<style>
+  /* 全体のリセットと背景設定 */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background-color: #0d1117; /* 高級感のあるダークネイビーブラック */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Segoe UI", sans-serif;
+    color: #ffffff;
+  }
+
+  /* 画面全体のレイアウト（左にサイドバー、右に4画面） */
+  .main-container {
+    display: flex;
+    width: 1920px;
+    height: 1080px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* ==========================================
+     左側：情報・ロゴエリア（サイドバー）
+     ========================================== */
+  .sidebar {
+    width: 540px; /* モニターと綺麗に揃う幅 */
+    height: 1040px;
+    background: #161b22;
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 上中下に綺麗に分散配置 */
+    border: 1px solid #30363d;
+  }
+
+  /* ロゴ配置エリア */
+  .logo-area {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #30363d;
+  }
+  .logo-area img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* メインタイトル */
+  .main-title {
+    margin-top: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #58a6ff; /* スマートなブルー */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .main-title::before {
+    content: "📊";
+    font-size: 28px;
+  }
+
+  /* 設置場所一覧リスト */
+  .location-list {
+    margin-top: -150px; /* 位置の微調整 */
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .location-item {
+    font-size: 20px;
+    padding: 15px 20px;
+    background: #21262d;
+    border-radius: 8px;
+    border-left: 6px solid #ccc;
+    display: flex;
+    align-items: center;
+  }
+  /* 左側の色ラインと連動させる */
+  .loc-1 { border-left-color: #ff453a; } /* 赤 */
+  .loc-2 { border-left-color: #0a84ff; } /* 青 */
+  .loc-3 { border-left-color: #30d158; } /* 緑 */
+  .loc-4 { border-left-color: #bf5af2; } /* 紫 */
+
+  /* 下部のアナウンスエリア */
+  .footer-notice {
+    background: #21262d;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px dashed #484f58;
+  }
+  .notice-title {
+    font-size: 16px;
+    color: #8b949e;
+    margin-bottom: 5px;
+  }
+  .notice-body {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+  }
+
+  /* ==========================================
+     右側：4つのモニターを並べるエリア（2×2）
+     ========================================== */
+  .monitor-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 540px);
+    grid-template-rows: repeat(2, 510px); /* ヘッダー分を考慮した高さ */
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+  }
+
+  /* モニターユニット（ヘッダーと中身を一体化） */
+  .monitor-card {
+    width: 540px;
+    height: 510px; /* 合計高さ */
+    background: #161b22;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #30363d;
+  }
+
+  /* モニターごとのヘッダー看板 */
+  .monitor-header {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  /* ヘッダーの背景色を識別しやすく色分け */
+  .id-1 .monitor-header { background: #cl-red; background-color: #a62a22; }
+  .id-2 .monitor-header { background: #cl-blue; background-color: #1a5fb4; }
+  .id-3 .monitor-header { background: #cl-green; background-color: #266e35; }
+  .id-4 .monitor-header { background: #cl-purple; background-color: #6e266b; }
+
+  /* モニター本体（iframeを540x470に押し込む窓） */
+  .monitor-body {
+    width: 540px;
+    height: 470px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+  }
+
+  /* あなたの作った最強のiframe用CSS（540x470用に少し倍率を最適化） */
+  .monitor-body iframe {
+    border: none;
+    position: absolute;
+    width: 605px;
+    height: 540px;
+    transform-origin: 0 0;
+    /* 540x470の枠にぴったり収まるように微調整スケール */
+    transform: scale(0.892, 0.87); 
+  }
+</style>
+</head>
+<body>
+
+<div class="main-container">
+  
+  <div class="sidebar">
+    <div class="logo-area">
+      <img src="logo.png" width="692" height="174" alt="会社ロゴ">
+      <div class="main-title">騒音振動計 総合モニター</div>
+    </div>
+    
+    <div class="location-list">
+      <div class="location-item loc-1">● 1号機：敷地境界（東側）</div>
+      <div class="location-item loc-2">● 2号機：重機作業エリア</div>
+      <div class="location-item loc-3">● 3号機：近隣住宅側（テスト表示）</div>
+      <div class="location-item loc-4">● 4号機：資材搬入口（テスト表示）</div>
+    </div>
+    
+    <div class="footer-notice">
+      <div class="notice-title">自主管理基準値</div>
+      <div class="notice-body">騒音: 85dB 以下 / 振動: 65dB 以下</div>
+    </div>
+  </div>
+
+  <div class="monitor-grid">
+
+    <div class="monitor-card id-1">
+      <div class="monitor-header">1号機：敷地境界（東側）</div>
+      <div class="monitor-body">
+        <iframe src="souon.html" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="monitor-card id-2">
+      <div class="monitor-header">2号機：重機作業エリア</div>
+      <div class="monitor-body">
+        <iframe src="souon2.html" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="monitor-card id-3">
+      <div class="monitor-header">3号機：近隣住宅側</div>
+      <div class="monitor-body">
+        <iframe src="souon2.html" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="monitor-card id-4">
+      <div class="monitor-header">4号機：資材搬入口</div>
+      <div class="monitor-body">
+        <iframe src="souon2.html" scrolling="no"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
