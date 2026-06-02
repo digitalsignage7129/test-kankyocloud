@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=600, height=512">
-<title>騒音振動モニター</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 600px;
-    height: 512px;
-    overflow: hidden;
-    background: #000;
-  }
-  .crop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 605px;
-    height: 540px;
-    overflow: hidden;
-    transform-origin: 0 0;
-  }
-  .crop iframe {
-    border: none;
-    position: absolute;
-    width: 1920px;
-    height: 1080px;
-    left: -700px;
-    top: -204px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600, height=512">
+  <title>Signage Monitor</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 600px;
+      height: 512px;
+      overflow: hidden;
+      background: #000;
+    }
+    .crop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 512px;
+      overflow: hidden;
+      transform-origin: 0 0;
+    }
+    .crop iframe {
+      border: none;
+      position: absolute;
+      /* ここの数値が切り抜きの起点です */
+      width: 1920px;
+      height: 1080px;
+      left: -440px; 
+      top: -310px;
+    }
+  </style>
 </head>
 <body>
   <div class="crop" id="crop">
     <iframe
-      src="https://www2.edam.ne.jp/Public/00642/Sokutei/SSC/RN?LoID=738"
+      src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN"
       scrolling="no"
     ></iframe>
   </div>
   <script>
     var c = document.getElementById('crop');
-    var w = parseInt(getComputedStyle(c).width);
-    var h = parseInt(getComputedStyle(c).height);
-    c.style.transform = 'scale('+(600/w)+','+(512/h)+')';
+    // 強制的にサイズをあわせる力技
+    c.style.transform = 'scale(1)'; 
   </script>
 </body>
 </html>
