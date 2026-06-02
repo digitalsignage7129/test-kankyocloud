@@ -14,7 +14,6 @@
     }
 
     .signage-window {
-      /* 横幅を少し広げて、右側の見切れを解消する準備 */
       width: 70vw; 
       height: 100vh;
       position: relative;
@@ -26,17 +25,19 @@
     .signage-window iframe {
       position: absolute;
       border: none;
+      
+      /* 【ここがポイント！】
+         幅(1024px)は変えずに、高さ(height)をいじることで
+         縦の表示エリアだけを狭めたり広げたりできます。
+      */
       width: 1024px;      
-      height: 600px;      
+      height: 600px; /* ここを調整！数値を増やすと縦に伸び、減らすと縮みます */
 
       top: 50%;
       left: 50%;
 
-      /* 【調整ポイント】
-         ・translate(-50%, -50%) → translate(-58%, -50%)
-           1番目を -58% にすることで、左へグッと寄せました。
-           2番目の -50% は「上の頭が完璧だった」今の数値をそのまま維持しています。
-         ・scale(1.6) はそのまま維持します。
+      /* 【上の頭・左寄せはここで固定】
+         translateは変更せず、scaleも 1.6 で固定します。
       */
       transform: translate(-67%, -50%) scale(1.6);
       
