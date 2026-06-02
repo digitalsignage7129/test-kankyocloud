@@ -35,11 +35,11 @@
     height: 1020px;
     background: #161b22;
     border-radius: 16px;
-    padding: 40px 30px; /* 上下のパディングを少し詰め、横幅を確保 */
+    padding: 35px 30px; /* 【変更】上下の余白をさらに5px削って縦の空間を確保 */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* 【変更】上詰めに変更し、間隔をコントロール */
-    gap: 35px; /* 【変更】各要素の隙間を一定にしてハミ出しを防止 */
+    justify-content: flex-start;
+    gap: 30px; /* 【変更】隙間を35pxから30pxに詰めて下にゆとりを作る */
     border: 3px solid #30363d;
   }
 
@@ -71,12 +71,12 @@
   .location-list {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* 【変更】隙間を少しだけ詰めて下に余裕を作る */
+    gap: 20px; 
   }
   .location-item {
     font-size: 38px;
     font-weight: 900;
-    padding: 24px 35px; /* 【変更】上下の厚みを少しスマートに */
+    padding: 24px 35px; 
     background: #21262d;
     border-radius: 14px;
     border-left: 18px solid #ccc;
@@ -89,24 +89,24 @@
   .loc-3 { border-left-color: #30d158; }
   .loc-4 { border-left-color: #bf5af2; }
 
-  /* 下部のアナウンスエリア */
+  /* 下部のアナウンスエリア（ここをスリム化して絶対にはみ出させません） */
   .footer-notice {
-    margin-top: auto; /* 【変更】これを入れることで、確実に一番下へ綺麗に張り付きます */
+    margin-top: auto; 
     background: #21262d;
-    padding: 25px 20px; /* 【変更】少し高さを抑えてハミ出しを完全ガード */
+    padding: 15px 20px; /* 【変更】上下の厚みを30px→15pxに半減 */
     border-radius: 14px;
     border: 3px dashed #484f58;
     text-align: center;
   }
   .notice-title {
-    font-size: 32px;
+    font-size: 26px; /* 【変更】32pxから26pxに少しコンパクトに */
     color: #8b949e;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* 【変更】隙間を小さく */
     font-weight: 900;
     letter-spacing: 3px;
   }
   .notice-body {
-    font-size: 52px;
+    font-size: 42px; /* 【変更】52pxから42pxへ、潰れない絶妙なサイズに調整 */
     font-weight: 900;
     color: #ffcc00;
     letter-spacing: 2px;
