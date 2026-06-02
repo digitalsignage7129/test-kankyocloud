@@ -10,162 +10,161 @@
     width: 1920px;
     height: 1080px;
     overflow: hidden;
-    background-color: #0d1117; /* 高級感のあるダークネイビーブラック */
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Segoe UI", sans-serif;
+    background-color: #0d1117;
+    /* サイネージで最も潰れにくい「太い角ゴシック」を最優先に指定 */
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
     color: #ffffff;
   }
 
-  /* 画面全体のレイアウト（左にサイドバー、右に4画面） */
+  /* 画面全体のレイアウト */
   .main-container {
     display: flex;
     width: 1920px;
     height: 1080px;
-    padding: 20px;
-    gap: 20px;
+    padding: 30px;
+    gap: 30px;
   }
 
   /* ==========================================
      左側：情報・ロゴエリア（サイドバー）
      ========================================== */
   .sidebar {
-    width: 540px; /* モニターと綺麗に揃う幅 */
-    height: 1040px;
+    width: 660px;
+    height: 1020px;
     background: #161b22;
     border-radius: 16px;
-    padding: 30px;
+    padding: 40px 30px; /* 横の余白を削って文字幅を確保 */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* 上中下に綺麗に分散配置 */
-    border: 1px solid #30363d;
+    justify-content: space-between;
+    border: 3px solid #30363d; /* 枠線も太く */
   }
 
   /* ロゴ配置エリア */
   .logo-area {
     width: 100%;
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #30363d;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #30363d;
   }
   .logo-area img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     object-fit: contain;
   }
 
-  /* メインタイトル */
+  /* 【巨大化】メインタイトル */
   .main-title {
-    margin-top: 25px;
-    font-size: 32px;
-    font-weight: bold;
+    margin-top: 30px;
+    font-size: 46px; /* さらに拡大 */
+    font-weight: 900; /* 最もおどろおどろしく太い設定 */
     letter-spacing: 2px;
-    color: #58a6ff; /* スマートなブルー */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .main-title::before {
-    content: "📊";
-    font-size: 28px;
+    color: #58a6ff;
+    text-align: center;
+    line-height: 1.3;
   }
 
-  /* 設置場所一覧リスト */
+  /* 【巨大化】設置場所一覧リスト */
   .location-list {
-    margin-top: -150px; /* 位置の微調整 */
+    margin-top: -20px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 24px;
   }
   .location-item {
-    font-size: 20px;
-    padding: 15px 20px;
+    font-size: 34px; /* 28pxから34pxへ一気に巨大化。看板サイズです */
+    font-weight: 900; /* 爆太 */
+    padding: 25px 20px;
     background: #21262d;
-    border-radius: 8px;
-    border-left: 6px solid #ccc;
+    border-radius: 12px;
+    border-left: 14px solid #ccc; /* 横の識別ラインも極太に */
     display: flex;
     align-items: center;
+    white-space: nowrap; /* 文字潰れ・改行を防ぐ */
   }
-  /* 左側の色ラインと連動させる */
-  .loc-1 { border-left-color: #ff453a; } /* 赤 */
-  .loc-2 { border-left-color: #0a84ff; } /* 青 */
-  .loc-3 { border-left-color: #30d158; } /* 緑 */
-  .loc-4 { border-left-color: #bf5af2; } /* 紫 */
+  .loc-1 { border-left-color: #ff453a; }
+  .loc-2 { border-left-color: #0a84ff; }
+  .loc-3 { border-left-color: #30d158; }
+  .loc-4 { border-left-color: #bf5af2; }
 
-  /* 下部のアナウンスエリア */
+  /* 【巨大化】下部のアナウンスエリア */
   .footer-notice {
     background: #21262d;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px dashed #484f58;
+    padding: 25px 15px;
+    border-radius: 12px;
+    border: 3px dashed #484f58;
+    text-align: center;
   }
   .notice-title {
-    font-size: 16px;
+    font-size: 28px; /* 22pxから28pxへ拡大 */
     color: #8b949e;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
   }
   .notice-body {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 44px; /* 32pxから44pxへ爆大化。圧倒的な存在感に */
+    font-weight: 900;
     color: #ffcc00;
+    letter-spacing: 1px;
   }
 
   /* ==========================================
      右側：4つのモニターを並べるエリア（2×2）
      ========================================== */
   .monitor-grid {
-    flex: 1;
+    width: 1140px;
+    height: 1020px;
     display: grid;
     grid-template-columns: repeat(2, 540px);
-    grid-template-rows: repeat(2, 510px); /* ヘッダー分を考慮した高さ */
-    gap: 20px;
+    grid-template-rows: repeat(2, 490px); /* ヘッダーが大きくなった分、縦を10px拡大 */
+    gap: 40px; /* 隙間を40pxにバランス調整 */
     justify-content: center;
     align-content: center;
   }
 
-  /* モニターユニット（ヘッダーと中身を一体化） */
+  /* モニターユニット */
   .monitor-card {
     width: 540px;
-    height: 510px; /* 合計高さ */
-    background: #161b22;
-    border-radius: 12px;
+    height: 490px; /* 50px(ヘッダー) + 440px(中身) */
+    background: #000000;
+    border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid #30363d;
+    border: 3px solid #30363d;
   }
 
-  /* モニターごとのヘッダー看板 */
+  /* 【巨大化】モニターごとのヘッダー看板 */
   .monitor-header {
-    height: 40px;
-    line-height: 40px;
-    padding-left: 15px;
-    font-size: 18px;
-    font-weight: bold;
+    height: 50px; /* 高さを40pxから50pxに拡張 */
+    line-height: 48px; /* 文字を中央に */
+    padding-left: 20px;
+    font-size: 26px; /* 22pxから26pxへ拡大。ガツンと太く見せます */
+    font-weight: 900; /* 爆太 */
     color: #ffffff;
+    letter-spacing: 1px;
   }
-  /* ヘッダーの背景色を識別しやすく色分け */
-  .id-1 .monitor-header { background: #cl-red; background-color: #a62a22; }
-  .id-2 .monitor-header { background: #cl-blue; background-color: #1a5fb4; }
-  .id-3 .monitor-header { background: #cl-green; background-color: #266e35; }
-  .id-4 .monitor-header { background: #cl-purple; background-color: #6e266b; }
+  .id-1 .monitor-header { background-color: #a62a22; }
+  .id-2 .monitor-header { background-color: #1a5fb4; }
+  .id-3 .monitor-header { background-color: #266e35; }
+  .id-4 .monitor-header { background-color: #6e266b; }
 
-  /* モニター本体（iframeを540x470に押し込む窓） */
+  /* モニター本体（等倍窓） */
   .monitor-body {
     width: 540px;
-    height: 470px;
+    height: 440px;
     overflow: hidden;
     position: relative;
-    background: #000;
+    background: #000000;
   }
-
-  /* あなたの作った最強のiframe用CSS（540x470用に少し倍率を最適化） */
   .monitor-body iframe {
     border: none;
     position: absolute;
-    width: 605px;
-    height: 540px;
-    transform-origin: 0 0;
-    /* 540x470の枠にぴったり収まるように微調整スケール */
-    transform: scale(0.892, 0.87); 
+    top: 0;
+    left: 0;
+    width: 540px;
+    height: 440px;
   }
 </style>
 </head>
@@ -182,13 +181,13 @@
     <div class="location-list">
       <div class="location-item loc-1">● 1号機：敷地境界（東側）</div>
       <div class="location-item loc-2">● 2号機：重機作業エリア</div>
-      <div class="location-item loc-3">● 3号機：近隣住宅側（テスト表示）</div>
-      <div class="location-item loc-4">● 4号機：資材搬入口（テスト表示）</div>
+      <div class="location-item loc-3">● 3号機：近隣住宅側</div>
+      <div class="location-item loc-4">● 4号機：資材搬入口</div>
     </div>
     
     <div class="footer-notice">
       <div class="notice-title">自主管理基準値</div>
-      <div class="notice-body">騒音: 85dB 以下 / 振動: 65dB 以下</div>
+      <div class="notice-body">騒音:85dB / 振動:65dB</div>
     </div>
   </div>
 
