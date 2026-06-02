@@ -111,23 +111,33 @@
   /* ==========================================
      右側：4つのモニターを並べるエリア（2×2）
      ========================================== */
-  .monitor-grid {
-    width: 1140px;
+  .monitor-container {
+    flex: 1;
     height: 1020px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .monitor-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1140px;
+    height: 1220px; /* 余白を持たせた高さ */
     display: grid;
     grid-template-columns: repeat(2, 540px);
-    /* 【変更】看板50px + 中身540px = 各縦枠を590pxに拡張 */
     grid-template-rows: repeat(2, 590px); 
-    gap: 20px; /* 縦幅を広げた分、隙間を20pxに詰めて1020px以内にジャストフィット */
-    justify-content: center;
-    align-content: center;
+    gap: 40px;
+    
+    /* 【ここが超重要】縦にはみ出た分を、83%に全体縮して1080pxの画面内にピッタリ収める */
+    transform-origin: 0 0;
+    transform: scale(0.83); 
   }
 
   /* モニターユニット */
   .monitor-card {
     width: 540px;
-    /* 【変更】50px(ヘッダー) + 540px(中身) = 590px に拡張 */
-    height: 590px; 
+    height: 590px; /* 看板50px + 中身540px */
     background: #000000;
     border-radius: 16px;
     overflow: hidden;
@@ -154,7 +164,6 @@
   /* モニター本体（等倍窓） */
   .monitor-body {
     width: 540px;
-    /* 【変更】縦幅を見切れのない「540px」に100px拡大 */
     height: 540px; 
     overflow: hidden;
     position: relative;
@@ -166,7 +175,6 @@
     top: 0;
     left: 0;
     width: 540px;
-    /* 【変更】iframe自体の高さの受け皿も540pxに合わせる */
     height: 540px; 
   }
 </style>
@@ -184,7 +192,7 @@
     <div class="location-list">
       <div class="location-item loc-1">● 1号機：敷地境界（東側）</div>
       <div class="location-item loc-2">● 2号機：重機作業エリア</div>
-      <div class="location-item loc-3">● 3号機：近環境住宅側</div>
+      <div class="location-item loc-3">● 3号機：近隣住宅側</div>
       <div class="location-item loc-4">● 4号機：資材搬入口</div>
     </div>
     
@@ -194,36 +202,38 @@
     </div>
   </div>
 
-  <div class="monitor-grid">
+  <div class="monitor-container">
+    <div class="monitor-grid">
 
-    <div class="monitor-card id-1">
-      <div class="monitor-header">1号機：敷地境界（東側）</div>
-      <div class="monitor-body">
-        <iframe src="souon.html" scrolling="no"></iframe>
+      <div class="monitor-card id-1">
+        <div class="monitor-header">1号機：敷地境界（東側）</div>
+        <div class="monitor-body">
+          <iframe src="souon.html" scrolling="no"></iframe>
+        </div>
       </div>
-    </div>
 
-    <div class="monitor-card id-2">
-      <div class="monitor-header">2号機：重機作業エリア</div>
-      <div class="monitor-body">
-        <iframe src="souon2.html" scrolling="no"></iframe>
+      <div class="monitor-card id-2">
+        <div class="monitor-header">2号機：重機作業エリア</div>
+        <div class="monitor-body">
+          <iframe src="souon2.html" scrolling="no"></iframe>
+        </div>
       </div>
-    </div>
 
-    <div class="monitor-card id-3">
-      <div class="monitor-header">3号機：近隣住宅側</div>
-      <div class="monitor-body">
-        <iframe src="souon2.html" scrolling="no"></iframe>
+      <div class="monitor-card id-3">
+        <div class="monitor-header">3号機：近隣住宅側</div>
+        <div class="monitor-body">
+          <iframe src="souon2.html" scrolling="no"></iframe>
+        </div>
       </div>
-    </div>
 
-    <div class="monitor-card id-4">
-      <div class="monitor-header">4号機：資材搬入口</div>
-      <div class="monitor-body">
-        <iframe src="souon2.html" scrolling="no"></iframe>
+      <div class="monitor-card id-4">
+        <div class="monitor-header">4号機：資材搬入口</div>
+        <div class="monitor-body">
+          <iframe src="souon2.html" scrolling="no"></iframe>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 
 </div>
