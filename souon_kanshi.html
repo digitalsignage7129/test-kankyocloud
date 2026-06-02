@@ -21,18 +21,19 @@
     width: 1920px;
     height: 1080px;
     padding: 30px;
-    gap: 30px;
+    gap: 30px; /* パネルとモニターの間の隙間 */
   }
 
   /* ==========================================
      左側：情報・ロゴエリア（サイドバー）
+     【大変更】横幅を660pxから920pxへ超ワイド化して右の余白を消滅させる
      ========================================== */
   .sidebar {
-    width: 660px;
+    width: 920px; 
     height: 1020px;
     background: #161b22;
     border-radius: 16px;
-    padding: 40px 30px;
+    padding: 50px 40px; /* 中の余白も広げて贅沢に空間を使う */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,40 +44,41 @@
   .logo-area {
     width: 100%;
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 30px;
     border-bottom: 3px solid #30363d;
   }
   .logo-area img {
-    width: 100%;
-    height: auto;
+    /* 元サイズが692pxなので、ワイド化した画面でもボケずに超綺麗に映ります */
+    width: 692px;
+    height: 174px;
     object-fit: contain;
   }
 
   /* メインタイトル */
   .main-title {
     margin-top: 30px;
-    font-size: 46px;
+    font-size: 52px; /* さらに文字を巨大化 */
     font-weight: 900;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     color: #58a6ff;
     text-align: center;
     line-height: 1.3;
   }
 
-  /* 設置場所一覧リスト */
+  /* 設置場所一覧リスト（ワイド画面に合わせてゆったり配置） */
   .location-list {
-    margin-top: -20px;
+    margin-top: -10px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
   }
   .location-item {
-    font-size: 34px;
+    font-size: 38px; /* さらに文字を大きく */
     font-weight: 900;
-    padding: 25px 20px;
+    padding: 28px 35px;
     background: #21262d;
-    border-radius: 12px;
-    border-left: 14px solid #ccc;
+    border-radius: 14px;
+    border-left: 18px solid #ccc; /* 識別ラインも極太に強化 */
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -89,30 +91,30 @@
   /* 下部のアナウンスエリア */
   .footer-notice {
     background: #21262d;
-    padding: 25px 15px;
-    border-radius: 12px;
+    padding: 30px 20px;
+    border-radius: 14px;
     border: 3px dashed #484f58;
     text-align: center;
   }
   .notice-title {
-    font-size: 28px;
+    font-size: 32px;
     color: #8b949e;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-weight: 900;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
   }
   .notice-body {
-    font-size: 44px;
+    font-size: 52px; /* 看板として圧倒的な視認性に */
     font-weight: 900;
     color: #ffcc00;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
   }
 
   /* ==========================================
      右側：4つのモニターを並べるエリア（2×2）
      ========================================== */
   .monitor-container {
-    flex: 1;
+    flex: 1; /* 残りのスペース（910px分）を自動で使い切る */
     height: 1020px;
     position: relative;
     overflow: hidden;
@@ -123,21 +125,20 @@
     top: 0;
     left: 0;
     width: 1140px;
-    height: 1220px; /* 余白を持たせた高さ */
+    height: 1220px;
     display: grid;
     grid-template-columns: repeat(2, 540px);
     grid-template-rows: repeat(2, 590px); 
     gap: 40px;
     
-    /* 【ここが超重要】縦にはみ出た分を、83%に全体縮して1080pxの画面内にピッタリ収める */
     transform-origin: 0 0;
-    transform: scale(0.83); 
+    transform: scale(0.83); /* 縦を1080pxに収めるための黄金比率 */
   }
 
   /* モニターユニット */
   .monitor-card {
     width: 540px;
-    height: 590px; /* 看板50px + 中身540px */
+    height: 590px;
     background: #000000;
     border-radius: 16px;
     overflow: hidden;
@@ -183,12 +184,14 @@
 
 <div class="main-container">
   
+  <!-- 左側：情報・ロゴエリア（超フルワイド版） -->
   <div class="sidebar">
     <div class="logo-area">
       <img src="logo.png" width="692" height="174" alt="会社ロゴ">
       <div class="main-title">騒音振動計 総合モニター</div>
     </div>
     
+    <!-- 設置場所一覧 -->
     <div class="location-list">
       <div class="location-item loc-1">● 1号機：敷地境界（東側）</div>
       <div class="location-item loc-2">● 2号機：重機作業エリア</div>
@@ -196,15 +199,18 @@
       <div class="location-item loc-4">● 4号機：資材搬入口</div>
     </div>
     
+    <!-- 環境目安アナウンス -->
     <div class="footer-notice">
       <div class="notice-title">自主管理基準値</div>
       <div class="notice-body">騒音:85dB / 振動:65dB</div>
     </div>
   </div>
 
+  <!-- 右側：4つのモニターエリア -->
   <div class="monitor-container">
     <div class="monitor-grid">
 
+      <!-- 1号機 -->
       <div class="monitor-card id-1">
         <div class="monitor-header">1号機：敷地境界（東側）</div>
         <div class="monitor-body">
@@ -212,6 +218,7 @@
         </div>
       </div>
 
+      <!-- 2号機 -->
       <div class="monitor-card id-2">
         <div class="monitor-header">2号機：重機作業エリア</div>
         <div class="monitor-body">
@@ -219,6 +226,7 @@
         </div>
       </div>
 
+      <!-- 3号機 -->
       <div class="monitor-card id-3">
         <div class="monitor-header">3号機：近隣住宅側</div>
         <div class="monitor-body">
@@ -226,6 +234,7 @@
         </div>
       </div>
 
+      <!-- 4号機 -->
       <div class="monitor-card id-4">
         <div class="monitor-header">4号機：資材搬入口</div>
         <div class="monitor-body">
