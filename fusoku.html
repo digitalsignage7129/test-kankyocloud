@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Environmental Monitoring Signage</title>
+  <title>Signage</title>
   <style>
     html, body {
       margin: 0;
@@ -14,29 +14,21 @@
     }
 
     .signage-window {
-      width: 100vw;
+      /* ここで右側の余白をカットする横幅を指定 */
+      width: 60vw; 
       height: 100vh;
-      position: relative;
+      margin: 0 auto;
       overflow: hidden;
       background-color: #000000;
     }
 
     .signage-window iframe {
-      position: absolute;
+      width: 1024px;
+      height: 900px;
       border: none;
-      
-      /* 1. 頭の位置を絶対固定 */
-      top: 0;
-      left: 50%;
-      
-      /* 2. iframeの中身サイズ（ここを調整すると表示範囲が変わる） */
-      width: 1024px;      
-      height: 900px; 
-
-      /* 3. 左寄せと拡大 */
-      /* translateXで左へずらす、scaleで拡大 */
-      transform: translateX(-55%) scale(1.5);
-      transform-origin: top center;
+      /* ここで位置と拡大率だけを管理する */
+      transform-origin: top left;
+      transform: translate(-300px, -20px) scale(1.5);
     }
   </style>
 </head>
