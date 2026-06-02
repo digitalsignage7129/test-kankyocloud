@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signage</title>
   <style>
     html, body {
@@ -13,42 +14,29 @@
       overflow: hidden;
     }
 
-    /* サイネージ全体を包む枠 */
-    .viewport {
+    #wrapper {
+      /* 枠に合わせて自動伸縮させるための設定 */
       width: 100vw;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
-    .signage-window {
-      /* 元の調整を維持するためのサイズ */
-      width: 65vw;
-      height: 65vh;
-      overflow: hidden;
-      background-color: #000000;
-      /* ここでサイネージの枠サイズに合わせて全体縮小 */
-      transform: scale(0.6); 
-      transform-origin: center center;
-    }
-
-    .signage-window iframe {
+    iframe {
       width: 1024px;
       height: 900px;
       border: none;
-      /* ここは変更していません（あなたの調整値） */
-      transform-origin: top left;
+      /* ここであなたの完璧な位置と拡大を固定 */
       transform: translate(-440px, -310px) scale(1.5);
+      /* 重要：ここを調整することで、サイネージ枠へのフィット率を変えられます */
+      zoom: 0.5; 
     }
   </style>
 </head>
 <body>
-  <div class="viewport">
-    <div class="signage-window">
-      <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
-    </div>
+  <div id="wrapper">
+    <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
   </div>
 </body>
 </html>
