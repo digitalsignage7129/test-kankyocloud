@@ -2,8 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signage</title>
   <style>
     html, body {
       margin: 0;
@@ -14,29 +12,38 @@
       overflow: hidden;
     }
 
-    #wrapper {
-      /* 枠に合わせて自動伸縮させるための設定 */
+    .wrapper {
       width: 100vw;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+    }
+
+    /* サイネージの表示枠に自動フィットさせるためのコンテナ */
+    .fit-container {
+      width: 1024px;  /* iframeの元の幅 */
+      height: 900px;  /* iframeの元の高さ */
+      transform: scale(0.5); /* 【ここだけ調整】枠に合わせて 0.3〜0.8 で変更 */
+      transform-origin: center center;
     }
 
     iframe {
       width: 1024px;
       height: 900px;
       border: none;
-      /* ここであなたの完璧な位置と拡大を固定 */
+      /* ここは変更不可。あなたの完璧な調整値 */
       transform: translate(-440px, -310px) scale(1.5);
-      /* 重要：ここを調整することで、サイネージ枠へのフィット率を変えられます */
-      zoom: 0.5; 
+      transform-origin: top left;
     }
   </style>
 </head>
 <body>
-  <div id="wrapper">
-    <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
+  <div class="wrapper">
+    <div class="fit-container">
+      <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
+    </div>
   </div>
 </body>
 </html>
