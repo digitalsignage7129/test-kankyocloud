@@ -21,7 +21,8 @@
       height: 900px;
       
       /* ここが肝：画面サイズに合わせて自動伸縮する */
-      transform: scale(calc(min(100vw / 1024, 100vh / 900)));
+      /* 最後の微調整：全体を少しだけ大きくする */
+transform: scale(calc(min(100vw / 1024, 100vh / 900) * 1.2));
       transform-origin: center center;
     }
 
