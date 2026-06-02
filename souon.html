@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>WBGT Signage</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #000000;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .signage-window {
-      /* 【ここを調整するだけでOK】 */
-      /* 縦幅はそのままに、横幅だけを調整できます */
-      width: 59vw; 
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      background-color: #000000;
-      margin: 0 auto;
-    }
-
-    .signage-window iframe {
-      position: absolute;
-      border: none;
-      
-      /* 前回の「縦が完璧だった設定」をそのまま維持 */
-      width: 1024px;      
-      height: 900px;      
-
-      top: 50%;
-      left: 50%;
-
-      /* 前回、「これで縦が完璧」と言っていただいた数値をそのまま入れます */
-      /* もし前の数値と微妙に違う場合は、手元のメモにある数値に書き換えてください */
-      transform: translate(-65%, -56%) scale(1.35);
-      
-      transform-origin: center center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>騒音振動モニター</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #000;
+  }
+  .crop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 605px;
+    height: 540px;
+    overflow: hidden;
+    transform-origin: 0 0;
+  }
+  .crop iframe {
+    border: none;
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: -700px;
+    top: -204px;
+  }
+</style>
 </head>
 <body>
-  <div class="signage-window">
-    <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/SSC/RN?LoID=244" scrolling="no"></iframe>
+  <div class="crop" id="crop">
+    <iframe
+      src="https://www2.edam.ne.jp/Public/00642/Sokutei/SSC/RN?LoID=738"
+      scrolling="no"
+    ></iframe>
   </div>
+  <script>
+    var c = document.getElementById('crop');
+    var w = parseInt(getComputedStyle(c).width);
+    var h = parseInt(getComputedStyle(c).height);
+    c.style.transform = 'scale('+(1920/w)+','+(1080/h)+')';
+  </script>
 </body>
 </html>
