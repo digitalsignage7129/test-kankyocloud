@@ -12,38 +12,33 @@
       overflow: hidden;
     }
 
-    .wrapper {
+    /* サイネージソフトの枠そのもの */
+    .signage-window {
       width: 100vw;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
+      position: relative;
     }
 
-    /* サイネージの表示枠に自動フィットさせるためのコンテナ */
-    .fit-container {
-      width: 1024px;  /* iframeの元の幅 */
-      height: 900px;  /* iframeの元の高さ */
-      transform: scale(0.5); /* 【ここだけ調整】枠に合わせて 0.3〜0.8 で変更 */
-      transform-origin: center center;
-    }
-
+    /* iframe自体に全ての設定を集約 */
     iframe {
+      border: none;
       width: 1024px;
       height: 900px;
-      border: none;
-      /* ここは変更不可。あなたの完璧な調整値 */
-      transform: translate(-440px, -310px) scale(1.5);
+      
+      /* 以下の設定が、あなたが完璧に調整した「位置」そのものです */
       transform-origin: top left;
+      transform: translate(-440px, -310px) scale(1.5);
+      
+      /* 【最終手段】サイネージの枠に合わない場合、ここだけを調整 */
+      /* この1行だけで、表示サイズを枠に合わせます（translate等は動かしません） */
+      zoom: 0.6; 
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="fit-container">
-      <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
-    </div>
+  <div class="signage-window">
+    <iframe src="https://www2.edam.ne.jp/Public/00574/Sokutei/FLD/RN" scrolling="no"></iframe>
   </div>
 </body>
 </html>
