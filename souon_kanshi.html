@@ -11,7 +11,6 @@
     height: 1080px;
     overflow: hidden;
     background-color: #0d1117;
-    /* サイネージで最も潰れにくい「太い角ゴシック」を最優先に指定 */
     font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
     color: #ffffff;
   }
@@ -33,11 +32,11 @@
     height: 1020px;
     background: #161b22;
     border-radius: 16px;
-    padding: 40px 30px; /* 横の余白を削って文字幅を確保 */
+    padding: 40px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 3px solid #30363d; /* 枠線も太く */
+    border: 3px solid #30363d;
   }
 
   /* ロゴ配置エリア */
@@ -53,18 +52,18 @@
     object-fit: contain;
   }
 
-  /* 【巨大化】メインタイトル */
+  /* メインタイトル */
   .main-title {
     margin-top: 30px;
-    font-size: 46px; /* さらに拡大 */
-    font-weight: 900; /* 最もおどろおどろしく太い設定 */
+    font-size: 46px;
+    font-weight: 900;
     letter-spacing: 2px;
     color: #58a6ff;
     text-align: center;
     line-height: 1.3;
   }
 
-  /* 【巨大化】設置場所一覧リスト */
+  /* 設置場所一覧リスト */
   .location-list {
     margin-top: -20px;
     display: flex;
@@ -72,22 +71,22 @@
     gap: 24px;
   }
   .location-item {
-    font-size: 34px; /* 28pxから34pxへ一気に巨大化。看板サイズです */
-    font-weight: 900; /* 爆太 */
+    font-size: 34px;
+    font-weight: 900;
     padding: 25px 20px;
     background: #21262d;
     border-radius: 12px;
-    border-left: 14px solid #ccc; /* 横の識別ラインも極太に */
+    border-left: 14px solid #ccc;
     display: flex;
     align-items: center;
-    white-space: nowrap; /* 文字潰れ・改行を防ぐ */
+    white-space: nowrap;
   }
   .loc-1 { border-left-color: #ff453a; }
   .loc-2 { border-left-color: #0a84ff; }
   .loc-3 { border-left-color: #30d158; }
   .loc-4 { border-left-color: #bf5af2; }
 
-  /* 【巨大化】下部のアナウンスエリア */
+  /* 下部のアナウンスエリア */
   .footer-notice {
     background: #21262d;
     padding: 25px 15px;
@@ -96,14 +95,14 @@
     text-align: center;
   }
   .notice-title {
-    font-size: 28px; /* 22pxから28pxへ拡大 */
+    font-size: 28px;
     color: #8b949e;
     margin-bottom: 12px;
     font-weight: 900;
     letter-spacing: 2px;
   }
   .notice-body {
-    font-size: 44px; /* 32pxから44pxへ爆大化。圧倒的な存在感に */
+    font-size: 44px;
     font-weight: 900;
     color: #ffcc00;
     letter-spacing: 1px;
@@ -117,8 +116,9 @@
     height: 1020px;
     display: grid;
     grid-template-columns: repeat(2, 540px);
-    grid-template-rows: repeat(2, 490px); /* ヘッダーが大きくなった分、縦を10px拡大 */
-    gap: 40px; /* 隙間を40pxにバランス調整 */
+    /* 【変更】看板50px + 中身540px = 各縦枠を590pxに拡張 */
+    grid-template-rows: repeat(2, 590px); 
+    gap: 20px; /* 縦幅を広げた分、隙間を20pxに詰めて1020px以内にジャストフィット */
     justify-content: center;
     align-content: center;
   }
@@ -126,7 +126,8 @@
   /* モニターユニット */
   .monitor-card {
     width: 540px;
-    height: 490px; /* 50px(ヘッダー) + 440px(中身) */
+    /* 【変更】50px(ヘッダー) + 540px(中身) = 590px に拡張 */
+    height: 590px; 
     background: #000000;
     border-radius: 16px;
     overflow: hidden;
@@ -135,13 +136,13 @@
     border: 3px solid #30363d;
   }
 
-  /* 【巨大化】モニターごとのヘッダー看板 */
+  /* モニターごとのヘッダー看板 */
   .monitor-header {
-    height: 50px; /* 高さを40pxから50pxに拡張 */
-    line-height: 48px; /* 文字を中央に */
+    height: 50px;
+    line-height: 48px;
     padding-left: 20px;
-    font-size: 26px; /* 22pxから26pxへ拡大。ガツンと太く見せます */
-    font-weight: 900; /* 爆太 */
+    font-size: 26px;
+    font-weight: 900;
     color: #ffffff;
     letter-spacing: 1px;
   }
@@ -153,7 +154,8 @@
   /* モニター本体（等倍窓） */
   .monitor-body {
     width: 540px;
-    height: 440px;
+    /* 【変更】縦幅を見切れのない「540px」に100px拡大 */
+    height: 540px; 
     overflow: hidden;
     position: relative;
     background: #000000;
@@ -164,7 +166,8 @@
     top: 0;
     left: 0;
     width: 540px;
-    height: 440px;
+    /* 【変更】iframe自体の高さの受け皿も540pxに合わせる */
+    height: 540px; 
   }
 </style>
 </head>
@@ -181,7 +184,7 @@
     <div class="location-list">
       <div class="location-item loc-1">● 1号機：敷地境界（東側）</div>
       <div class="location-item loc-2">● 2号機：重機作業エリア</div>
-      <div class="location-item loc-3">● 3号機：近隣住宅側</div>
+      <div class="location-item loc-3">● 3号機：近環境住宅側</div>
       <div class="location-item loc-4">● 4号機：資材搬入口</div>
     </div>
     
