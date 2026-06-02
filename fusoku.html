@@ -16,22 +16,19 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      /* ここで基準を左上にロックします */
       position: relative;
     }
 
+    /* iframeは「等倍」で配置し、中の位置は親要素で制御する */
     iframe {
-      width: 1024px;
-      height: 900px;
+      width: 1536px;  /* 1024px * 1.5倍 で計算 */
+      height: 1350px; /* 900px * 1.5倍 で計算 */
       border: none;
-      /* これ以上、左右にズレないように設定 */
-      position: absolute;
-      top: 0;
-      left: 0;
       
-      /* 切り抜き座標をここで一括固定 */
-      transform-origin: 0 0;
-      transform: translate(-440px, -310px) scale(1.5);
+      /* transformを使わず、直接座標をマイナスに設定 */
+      position: absolute;
+      top: -465px;  /* (-310px * 1.5倍) */
+      left: -660px; /* (-440px * 1.5倍) */
     }
   </style>
 </head>
