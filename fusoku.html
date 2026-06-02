@@ -26,22 +26,20 @@
       position: absolute;
       border: none;
       
-      /* 【ここがポイント！】
-         幅(1024px)は変えずに、高さ(height)をいじることで
-         縦の表示エリアだけを狭めたり広げたりできます。
-      */
+      /* 1. 幅と高さ */
       width: 1024px;      
-      height: 600px; /* ここを調整！数値を増やすと縦に伸び、減らすと縮みます */
+      height: 500px; /* ここで縦幅を調整（小さいほど縦がギュッと詰まる） */
 
-      top: 50%;
+      /* 2. 上の頭を固定する設定 */
+      top: 0; 
       left: 50%;
 
-      /* 【上の頭・左寄せはここで固定】
-         translateは変更せず、scaleも 1.6 で固定します。
-      */
-      transform: translate(-67%, -50%) scale(1.6);
+      /* 3. 横の左寄せと、拡大率 */
+      /* translateの最初の数値で横位置調整、scaleで全体拡大 */
+      transform: translateX(-68%) scale(1.6);
       
-      transform-origin: center center;
+      /* 回転や拡大の基準を「左上」に固定 */
+      transform-origin: top center;
     }
   </style>
 </head>
